@@ -2,7 +2,8 @@
 
 function getToday(): string
 {
-    $date = date_create('Y-m-d ');
-    return  date_format($date , 'd/m/y');
+    $date = date_create();
+    return date_format($date, 'd/m/y');
 }
-echo getDate();
+
+echo getToday();
