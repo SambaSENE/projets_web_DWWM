@@ -60,7 +60,7 @@
          }
      }
      
-     echo getDiv(4, 0);
+     echo getDiv(20, 3);
 
      
 
