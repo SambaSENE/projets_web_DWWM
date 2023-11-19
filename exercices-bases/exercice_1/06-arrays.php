@@ -31,15 +31,22 @@ echo '<br>';
 echo firstItem('Macron');
 echo '<hr>';
 
+/**
+ *  retourne  dernier element du tableau
+ *
+ * @param array $array
+ * @return array
+ */
 function lastItem(array $array): array
 {
-    if (!empty($array)) {
-        return end($array);
+    if (empty($array)) {
+        return [];
     } else {
-        return null;
+        return end($array);
     }
 }
 
 $arrayNames = ['Joe', 'Jack', 'William', 'Avrelle' , 'Lucky Luc'];
-echo lastItem($arrayNames);
+$res = lastItem($arrayNames);
+var_dump($res) ;
 
