@@ -30,23 +30,41 @@ echo firstItem('Avrelle');
 echo '<br>';
 echo firstItem('Macron');
 echo '<hr>';
-
 /**
- *  retourne  dernier element du tableau
+ * Retourne le dernier élément du tableau.
  *
  * @param array $array
- * @return array
+ * @return mixed|null
  */
-function lastItem(array $array): array
+function lastItem(array $array)
 {
     if (empty($array)) {
-        return [];
+        return null;
     } else {
         return end($array);
     }
 }
 
-$arrayNames = ['Joe', 'Jack', 'William', 'Avrelle' , 'Lucky Luc'];
+$arrayNames = ['Joe', 'Jack', 'William', 'Avrelle', 'Lucky Luc'];
 $res = lastItem($arrayNames);
-var_dump($res) ;
+echo $res;
+echo '<hr>';
+
+/**
+ * Undocumented function
+ *
+ * @param array $array
+ * @return void
+ */
+function sortItem(array $array)
+{
+    if(empty($array)){
+        return 'Tableau vide';
+    }else {
+        return sort($array);
+    }
+}
+$arrayNames = ['Joe', 'Jack', 'William', 'Avrelle', 'Lucky Luc']; 
+$res = sortItem($arrayNames);
+var_dump( $res);
 
