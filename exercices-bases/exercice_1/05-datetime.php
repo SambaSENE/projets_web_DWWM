@@ -20,27 +20,51 @@ echo '<br>';
  * @param string $date
  * @return string
  */
+// function getTimeLeft(string $date): string
+// {
+//     $dateActuelle = new DateTime('now');
+//     $dateDonnee = DateTime::createFromFormat('Y/m/d', $date);
+
+//     if (!$dateDonnee) {
+//         return 'Format de date invalide';
+//     }
+
+//     $intervalle = $dateDonnee ->diff($dateActuelle) ; 
+
+//     if ($dateDonnee < $dateActuelle) {
+
+//         return $intervalle ->format('%R%a jours %H heures %I minutes'); // ???
+//     } elseif ($dateDonnee > $dateActuelle) {
+
+//         return $intervalle ->format('%R%a jours %H heures %I minutes'); // ???
+//     } else {
+//         return "Aujourd'hui";
+//     }
+// }
+
 function getTimeLeft(string $date): string
 {
-    $dateActuelle = new DateTime();
-    $dateDonnee = DateTime::createFromFormat('d/m/Y', $date);
-
-    if (!$dateDonnee) {
+    
+ 
+    if (DateTime::createFromFormat('y/m/d', $date)) {
         return 'Format de date invalide';
     }
 
+    $dateActuelle = new DateTime('now');
+    $dateDonnee = date_create($date); 
     $intervalle = $dateDonnee ->diff($dateActuelle) ; // (->)???  fonction pour trouver la differeence
+   
+    if ($dateDonnee < $dateActuelle) { 
+        
+        return 'Évènement passé'; 
+        
+    } elseif($dateDonnee > $dateActuelle){
+        echo $intervalle->m;echo '<br>';
+        return $intervalle->format('%R%a jours  ');
 
-    if ($dateDonnee < $dateActuelle) {
-
-        return $intervalle ->format('%R%a jours %H heures %I minutes'); // ???
-    } elseif ($dateDonnee > $dateActuelle) {
-
-        return $intervalle ->format('%R%a jours %H heures %I minutes'); // ???
-    } else {
+    }else {
         return "Aujourd'hui";
     }
 }
-
 // Exemple d'utilisation :
-echo getTimeLeft('23/01/2024');
+echo getTimeLeft('2024/11/4');

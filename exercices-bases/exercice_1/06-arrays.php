@@ -7,15 +7,15 @@
  * @param string $name
  * @return string
  */
-function firstItem(string $name) : string 
+function firstItem(string $name): string
 {
-    $arrayNames = ['Joe' , 'Jack' , 'William' , 'Avrelle'];
+    $arrayNames = ['Joe', 'Jack', 'William', 'Avrelle'];
 
-   if(in_array($name , $arrayNames)){
-    return $name;
-   }else {
-    return 'null';
-   }
+    if (in_array($name, $arrayNames)) {
+        return $name;
+    } else {
+        return 'null';
+    }
 }
 
 
@@ -51,20 +51,46 @@ echo $res;
 echo '<hr>';
 
 /**
- * Undocumented function
+ * retourne le tableau dans l'ordre décroissant
  *
  * @param array $array
  * @return void
  */
-function sortItem(array $array)
+function sortItems($array)
 {
-    if(empty($array)){
-        return 'Tableau vide';
-    }else {
-        return sort($array);
+    if (empty($array)) {
+        return 'tableau vide';
+    }else{
+
+        rsort($array);
+     
+        return implode(', ', $array);
     }
+ 
 }
-$arrayNames = ['Joe', 'Jack', 'William', 'Avrelle', 'Lucky Luc']; 
-$res = sortItem($arrayNames);
-var_dump( $res);
+$arrayNames = array('Joe', 'Jack', 'William', 'Avrelle', 'Lucky Luc');
+$res = sortItems($arrayNames);
+echo  $res;
+
+/**
+ * retourne le tableau dans l'ordre croissant
+ *
+ * @param [type] $array
+ * @return void
+ */
+function stringItems($array)
+{
+    if (empty($array)) {
+        return 'tableau vide';
+    }else{
+
+        asort($array);
+     
+        return implode(', ', $array);
+    }
+ 
+}
+$arrayNames = array('Joe', 'Jack', 'William', 'Avrelle', 'Lucky Luc');
+$res = stringItems($arrayNames);
+echo  $res;
 
