@@ -3,53 +3,85 @@
 abstract class Moteur
 {
     protected string $marque;
-    protected float $vitesseMax = 100;
+    protected float $vitesseMax;
+    protected bool $isStop = false;
 
-    public function __construct(string $_marque, float $_vitesseMax)
+    public function __construct(string $_marque, float $_vitesseMax, bool $_isStop)
     {
         $this->marque  =  $_marque;
         $this->vitesseMax = $_vitesseMax;
     }
 
+
+
     /**
-     * 
+     * Get the value of marque
      *
      * @return string
      */
-    public function getMarque() : string
+    public function getMarque(): string
     {
         return $this->marque;
     }
+
     /**
-     * 
+     * Set the value of marque
      *
-     * @param string $_marque
-     * @return string
+     * @param string $marque
+     *
+     * @return self
      */
-    public function  setMarque(string $_marque) : void
+    public function setMarque(string $marque): self
     {
-        $this->marque = $_marque;
-        
+        $this->marque = $marque;
+        return $this;
     }
 
     /**
-     * 
+     * Get the value of vitesseMax
      *
      * @return float
      */
-    public function getVitesseMax() : float
+    public function getVitesseMax(): float
     {
         return $this->vitesseMax;
     }
-    /**
-     * 
-     *
-     * @param string $_vitesseMax
-     * @return float
-     */
-    public function  setVitesseMax(string $_vitesseMax) : void
-    {
-        $this->vitesseMax = $_vitesseMax;
 
+    /**
+     * Set the value of vitesseMax
+     *
+     * @param float $vitesseMax
+     *
+     * @return self
+     */
+    public function setVitesseMax(float $vitesseMax): self
+    {
+        $this->vitesseMax = $vitesseMax;
+        return $this;
+    }
+    /**
+     *  return true if isStop => false
+     *
+     * @return boolean
+     */
+    public function start() : bool
+    {
+        if (!$this->isStop) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * return flase if isStop => true
+     *
+     * @return boolean
+     */
+    public function stop() : bool
+    {
+        if($this->isStop == false)
+        {
+            return true;
+        }
+        return false;
     }
 }
