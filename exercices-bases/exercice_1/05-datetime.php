@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  retoune date en chaine de caractere
  *
@@ -44,25 +45,24 @@ echo '<br>';
 
 function getTimeLeft(string $date): string
 {
-    
- 
+
+
     if (DateTime::createFromFormat('y/m/d', $date)) {
         return 'Format de date invalide';
     }
 
     $dateActuelle = new DateTime('now');
-    $dateDonnee = date_create($date); 
-    $intervalle = $dateDonnee ->diff($dateActuelle) ; // (->)???  fonction pour trouver la differeence
-   
-    if ($dateDonnee < $dateActuelle) { 
-        
-        return 'Évènement passé'; 
-        
-    } elseif($dateDonnee > $dateActuelle){
-        echo $intervalle->m;echo '<br>';
-        return $intervalle->format('%R%a jours  ');
+    $dateDonnee = date_create($date);
+    $intervalle = $dateDonnee->diff($dateActuelle); // (->)???  fonction pour trouver la differeence
 
-    }else {
+    if ($dateDonnee < $dateActuelle) {
+
+        return 'Évènement passé';
+    } elseif ($dateDonnee > $dateActuelle) {
+        echo $intervalle->m;
+        echo '<br>';
+        return $intervalle->format('%R%a jours  ');
+    } else {
         return "Aujourd'hui";
     }
 }
