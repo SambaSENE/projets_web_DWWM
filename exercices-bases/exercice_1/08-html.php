@@ -1,5 +1,7 @@
 <?php
 
+echo phpinfo();
+
             function htmlList(string $titleListe, array $arrayList)
             {
                 if (empty($arrayList)) {
@@ -21,7 +23,7 @@
                 return $title . $name;
             }
 
-            $name = ['Stefan', 'Nathan', 'Guiaume', 'toto', 'macron'];
+            $name = ['Stefan', 'Nathan', 'Guillaume', 'toto', 'macron'];
             
             ?>
 <!DOCTYPE html>
