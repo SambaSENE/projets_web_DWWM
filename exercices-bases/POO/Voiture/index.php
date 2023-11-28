@@ -18,3 +18,8 @@ $voitureSport = new VoitureCourse('Maclaren ' ,  'f1' , 450 , new Moteur(400 , t
 
 var_dump($voitureSport);
 var_dump($voitureSport->getVitesseSport());
+
+$voitureSport2 = new VoitureCourse('Mazda' , 'f1' , 400 , new Moteur(450 , true));
+echo '<hr>';
+var_dump($voitureSport2);
+var_dump($voitureSport2->getVitesseSport());

@@ -1,6 +1,6 @@
 <?php
 
-class Personne
+ class Personne
 {
     private string $nom;
     private string $prenom;
@@ -13,16 +13,16 @@ class Personne
         $this->dateNaissance = $_dateNaissance;
     }
 
-    function getAge($dateDeNaissance)
+    function getAge()
     {
         // Convertit la date de naissance en format timestamp
-        $dateDeNaissance = strtotime($dateDeNaissance);
+        $this->dateNaissance = strtotime($this->dateNaissance);
     
         // Obtient la date du jour en format timestamp
         $dateDuJour = time();
     
         // Calcul l'écart entre les deux dates en secondes
-        $diff = $dateDuJour - $dateDeNaissance;
+        $diff = $dateDuJour - $this->dateNaissance;
     
         // Convertit l'écart en années
         $age = floor($diff / (60 * 60 * 24 * 365));
