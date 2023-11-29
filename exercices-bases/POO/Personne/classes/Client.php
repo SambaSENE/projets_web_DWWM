@@ -1,38 +1,23 @@
 <?php
 
-    class Client extends Personne
+class Client extends Personne
+{
+    private int $numClient;
+
+    public function  __construct(int $_numClient)
     {
-        private string $numClient;
-        private Personne $fullName;
-        private Adresse $adresse;
-
-        public function  __construct(string $_numClient , Personne $_fullName , Adresse $_adresse)
-        {
-        
-            $this->numClient = $_numClient;
-            $this->fullName = $_fullName;
-            $this->adresse = $_adresse;
-        }
-
-        public function getFullClient() : string
-        {
-            return $this->getNom() .' ' . $this->getPrenom();
-        }
-        
-        public function getAdresseClient() : string
-        {
-            return $this->adresse->getAdresse();
-        }
-        
-
-        /**
-         * Get the value of numClient
-         *
-         * @return string
-         */
-        public function getNumClient(): string {
-                return $this->numClient;
-        }
-        
-        
+        $this->numClient = $_numClient;
     }
+
+
+
+    /**
+     * Get the value of numClient
+     *
+     * @return int
+     */
+    public function getNumClient(): int
+    {
+        return $this->numClient;
+    }
+}
