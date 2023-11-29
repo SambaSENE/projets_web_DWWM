@@ -27,13 +27,18 @@ class Intervenant extends Personne
     {
         return $this->getNom() . ' ' . $this->getPrenom();
     }
-
+    /**
+     * Retourne les charges en float
+     *
+     * @return float
+     */
     public function getCharge(): float
     {
-        if ($this->getAge() > 55) {
-            return ((($this->salaire * 20) / 100) + (($this->autreRevenus * 15) / 100)) / 2;
+        if ($this->getAge() < 55) {
+            
+            return ((($this->salaire * 20) / 100) + (($this->autreRevenus * 15) / 100))  ;
         } else {
-            return ((($this->salaire * 20) / 100) + (($this->autreRevenus * 15) / 100));
+            return ((($this->salaire * 20) / 100) + (($this->autreRevenus * 15) / 100) ) /2;
         }
     }
     /**
