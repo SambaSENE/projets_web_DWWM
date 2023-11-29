@@ -41,18 +41,7 @@
         return $this->nom;
     }
 
-    /**
-     * Set the value of nom
-     *
-     * @param string $nom
-     *
-     * @return self
-     */
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-        return $this;
-    }
+    
 
     /**
      * Get the value of prenom
@@ -64,16 +53,5 @@
         return $this->prenom;
     }
 
-    /**
-     * Set the value of prenom
-     *
-     * @param string $prenom
-     *
-     * @return self
-     */
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-        return $this;
-    }
+    
 }

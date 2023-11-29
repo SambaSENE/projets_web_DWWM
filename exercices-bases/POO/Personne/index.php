@@ -18,8 +18,6 @@ use classe\Intervention;
     var_dump($intervenant->getFullNameIntervenant());
     var_dump($intervenant->getCharge());
 
-    $client = new Client(12345, 'Doe','jonh' , 'ùqfzefzefzef"');
-    var_dump($client->getNumClient());
-    echo '<hr>';
-
-    $intervention = new Intervention(1223,'jean' , '11-12-2023' , '09:00:00');
+    $client = new Client(12345, 'Doe','jonh' , 'ùqfzefzefzef' , new Adresse(4 ,  'ggggg' , '68000' , 'colmar'));
+     var_dump($client);
+    
