@@ -1,5 +1,13 @@
 <?php
+   include "./CalculImpot/classes/ImpotCalcultator.php";
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $nom = $_POST["nom"];
+        $revenu = $_POST["revenu"];
     
+        $impot = CalculImpot($revenu);
+    
+        echo "$nom, votre impôt est de $impot euros.";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr-fr">
