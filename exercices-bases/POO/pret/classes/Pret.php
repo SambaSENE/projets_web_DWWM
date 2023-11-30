@@ -1,6 +1,6 @@
 <?php
 
-class Prêt
+class Pret
 {
     private $capital;
     private $taux;
@@ -49,6 +49,27 @@ class Prêt
         }
 
         return $tableau;
+    }
+
+    /**
+     * Get the value of capital
+     */
+    public function getCapital() {
+        return $this->capital;
+    }
+
+    /**
+     * Get the value of taux
+     */
+    public function getTaux() {
+        return $this->taux;
+    }
+
+    /**
+     * Get the value of duree
+     */
+    public function getDuree() {
+        return $this->duree;
     }
 }
 
