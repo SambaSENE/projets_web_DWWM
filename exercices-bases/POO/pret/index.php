@@ -1,34 +1,14 @@
 <?php
 include "./classes/Pret.php";
-$pret = new Pret($_POST['capital'], $_POST['taux'], $_POST['duree']);
 
 if (!empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree"])) {
-    $mensualite = $pret->calculerMensualite();
-
-
     
-    $amortizationTable = [];
-
-
-    $monthlyInterestRate = $pret->getTaux() / 100 / 12;
-
-
-    $remainingBalance = $pret->getCapital();
-    for ($month = 1; $month <= $pret->getDuree(); $month++) {
-        $interest = $remainingBalance * $monthlyInterestRate;
-        $principal = $mensualite - $interest;
-        $remainingBalance -= $principal;
-
-
-        $amortizationTable[] = [
-            'Month' => $month,
-            'Principal' => $principal,
-            'Interest' => $interest,
-            'RemainingBalance' => $remainingBalance,
-        ];
-    }
+    $pret = new Pret($_POST['capital'], $_POST['taux'], $_POST['duree']);
+    $mensualite = $pret->calculerMensualite($_POST['capital'], $_POST['taux'], $_POST['duree']);
+    
+    $amortizationTable = $pret->genererTableauAmortissement();
 }
-
+var_dump($mensualite);
 
 ?>
 <!DOCTYPE html>
@@ -78,14 +58,7 @@ if (!empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($amortizationTable as $row) : ?>
-                <tr>
-                    <td><?= $row['Month'] ?></td>
-                    <td><?= $row['Principal'] ?></td>
-                    <td><?= $row['Interest'] ?></td>
-                    <td><?= $row['RemainingBalance'] ?></td>
-                </tr>
-            <?php endforeach; ?>
+            <?= $amortizationTable ?>
         </tbody>
     </table>
 </body>

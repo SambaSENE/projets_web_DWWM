@@ -29,27 +29,37 @@ class Pret
         return $this->capital * $tauxMensuel / $q;
     }
 
-    // public function genererTableauAmortissement()
-    // {
-    //     $mensualite = $this->calculerMensualite();
+    ///form bard
+    // function calculerMensualite($capital, $taux, $duree) {
+    //     // Calcul du taux mensuel
+    //     $tauxMensuel = $taux / 12;
+      
+    //     // Calcul de la mensualité
+    //     $mensualite = $capital * $tauxMensuel / (1 - (1 + $tauxMensuel) * (-$duree));
+      
+    //     return $mensualite;
+    //   }
+    public function genererTableauAmortissement()
+    {
+        $mensualite = $this->calculerMensualite($this->capital , $this->taux , $this->duree);
 
-    //     $tableau = array();
+        $tableau = array();
 
-    //     for ($mois = 1; $mois <= $this->duree * 12; $mois++) {
-    //         $capitalRestantDu = $this->capital - ($mensualite * ($mois - 1));
-    //         $partInteret = $capitalRestantDu * $this->taux / 12;
-    //         $partAmortissement = $mensualite - $partInteret;
+        for ($mois = 1; $mois <= $this->duree * 12; $mois++) {
+            $capitalRestantDu = $this->capital - ($mensualite * ($mois - 1));
+            $partInteret = $capitalRestantDu * $this->taux / 12;
+            $partAmortissement = $mensualite - $partInteret;
 
-    //         $tableau[] = array(
-    //             $mois,
-    //             $capitalRestantDu,
-    //             $partInteret,
-    //             $partAmortissement,
-    //         );
-    //     }
+            $tableau[] = array(
+                $mois,
+                $capitalRestantDu,
+                $partInteret,
+                $partAmortissement,
+            );
+        }
 
-    //     return $tableau;
-    // }
+        return $tableau;
+    }
 
     /**
      * Get the value of capital
