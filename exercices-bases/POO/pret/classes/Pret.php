@@ -24,7 +24,7 @@ class Pret
             $factoriel *= $i;
         }
 
-        $q = 1 - pow(1 + $tauxMensuel, -$nombreMois);
+        $q = 1 - pow(1 + $tauxMensuel,$nombreMois);
 
         return $this->capital * $tauxMensuel / $q;
     }
