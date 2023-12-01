@@ -1,23 +1,25 @@
 <?php
-include "./classes/Pret.php"; 
-$pret = new Pret($_POST['capital'], $_POST['taux'] , $_POST['duree']);
-if( !empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree"])) {
+include "./classes/Pret.php";
+$pret = new Pret($_POST['capital'], $_POST['taux'], $_POST['duree']);
+
+if (!empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree"])) {
     $mensualite = $pret->calculerMensualite();
 
- 
+
+    
     $amortizationTable = [];
 
 
     $monthlyInterestRate = $pret->getTaux() / 100 / 12;
 
-  
+
     $remainingBalance = $pret->getCapital();
     for ($month = 1; $month <= $pret->getDuree(); $month++) {
         $interest = $remainingBalance * $monthlyInterestRate;
         $principal = $mensualite - $interest;
         $remainingBalance -= $principal;
 
-     
+
         $amortizationTable[] = [
             'Month' => $month,
             'Principal' => $principal,
@@ -42,7 +44,7 @@ if( !empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree
 <body>
     <main>
         <h1>Calcul de prêt</h1>
-        <form aaction="<?php  echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <div>
                 <label for="capital">Capital emprunté : </label>
                 <input type="number" name="capital" id="capital">
@@ -76,14 +78,14 @@ if( !empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($amortizationTable as $row): ?>
-                        <tr>
-                            <td><?= $row['Month'] ?></td>
-                            <td><?= $row['Principal'] ?></td>
-                            <td><?= $row['Interest'] ?></td>
-                            <td><?= $row['RemainingBalance'] ?></td>
-                        </tr>
-                    <?php endforeach; ?>
+            <?php foreach ($amortizationTable as $row) : ?>
+                <tr>
+                    <td><?= $row['Month'] ?></td>
+                    <td><?= $row['Principal'] ?></td>
+                    <td><?= $row['Interest'] ?></td>
+                    <td><?= $row['RemainingBalance'] ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </body>
