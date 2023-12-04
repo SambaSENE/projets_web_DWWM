@@ -1,6 +1,6 @@
 <?php
 
-class Restaurant
+class MaTable
 {
     private int $id;
     private string $nom;
@@ -9,37 +9,49 @@ class Restaurant
     private string $commentaire;
     private float $note;
     private DateTime $visite;
+    private string $maTable;
 
-    public function __construct(int $_id, string $_nom, string $_adresse, float $_prix, string $_commentaire, float $_note, DateTime $_visite)
+    public function __construct(string $_maTable)
     {
-        $this->id = $_id;
-        $this->nom = $_nom;
-        $this->adresse = $_adresse;
-        $this->prix = $_prix;
-        $this->commentaire = $_commentaire;
-        $this->note = $_note;
-        $this->visite = $_visite;
+        $this->maTable = $_maTable;
     }
 
-    public function finfID()
+    public function  getData()  
     {
+        $state = [];
         try {
-            $connexion = new Connexion();
-            $requete = $connexion->prepare(
-                "SELECT * FROM restaurant WHERE id = :id"
-            );
+            $connexion = Connexion::getInstance();
+            $state = $connexion->prepare("SELECT * FROM " . $this->maTable);
+            $state->execute();
+
+            $data = $state->fetchAll();
+        } catch (PDOException $e) {
+            die("Erreur" . $e->getMessage());
+        }
+
+        return json_encode($data);
+    }
+    // public function finfID(int $_id) : array 
+    // {
+    //     try {
+    //         $connexion = Connexion::getInstance();
+    //         $state = $connexion->prepare(
+    //             "SELECT * FROM " .$this->maTable . " WHERE" . $_id
+    //         );
     
-            $requete->bindParam(':id', $this->id, PDO::PARAM_INT);
-            $requete->execute();
+    //         $state->bindParam(':id', $_id, PDO::PARAM_INT);
+    //         $state->execute();
     
-            $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+    //         $resultat = $state->fetch();
     
             
     
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
-    }
+    //     } catch (PDOException $e) {
+    //         die($e->getMessage());
+    //     }
+
+    //     return $resultat;
+    // }
     
     /**
      * Get the value of id

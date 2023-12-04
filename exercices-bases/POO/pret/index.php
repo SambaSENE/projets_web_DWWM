@@ -1,14 +1,15 @@
 <?php
 include "./classes/Pret.php";
 
+
 if (!empty($_POST['capital']) && !empty($_POST['taux'])  && !empty($_POST["duree"])) {
     
     $pret = new Pret($_POST['capital'], $_POST['taux'], $_POST['duree']);
     $mensualite = $pret->calculerMensualite($_POST['capital'], $_POST['taux'], $_POST['duree']);
     
-    $amortizationTable = $pret->genererTableauAmortissement();
+    var_dump($mensualite);
+    
 }
-var_dump($mensualite);
 
 ?>
 <!DOCTYPE html>
@@ -58,7 +59,8 @@ var_dump($mensualite);
             </tr>
         </thead>
         <tbody>
-            <?= $amortizationTable ?>
+           
+            
         </tbody>
     </table>
 </body>

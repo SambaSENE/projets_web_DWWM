@@ -1,33 +1,34 @@
 <?php
 
 
-class Connexion
+class Connexion 
 {
     protected const DBHOST = "localhost";
     protected const DBUSER = "root";
-    protected const DBPASS = "root";
-    protected const DBNAME = "guide";
+    protected const DBPASS = "";
+    protected const DBNAME = "guise";
+    private static  $maConnexion=null;
+ 
 
-    protected $dsn;
-
-    public function __construct()
+    private function __construct()
     {
-        $this->dsn = "mysql:dbname=" . self::DBNAME . ";host=" . self::DBHOST;
+        
+
+          
     }
 
-    public function connectDB()
-    {
+    public static function getInstance():PDO 
+    {  $dsn= "mysql:host=" .  self::DBHOST.";dbname=". self::DBNAME  ;
+        
+            if(is_null(self::$maConnexion))
+
         try {
-            $pdo = new PDO($this->dsn, self::DBUSER, self::DBPASS);
-            echo "Connecté avec succès !";
-            
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            self::$maConnexion = new PDO($dsn, self::DBUSER, self::DBPASS, [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC ]);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            echo "erreur".$e->getMessage();
         }
+            return self::$maConnexion;
+
     }
 }
 
-$connexion = new Connexion();
-$connexion->connectDB();
