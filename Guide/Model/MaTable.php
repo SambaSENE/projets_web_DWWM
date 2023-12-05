@@ -17,6 +17,11 @@ class MaTable
         $this->maTable = $_maTable;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return array
+     */
     public function findElement(): array
     {
         $element = [];
@@ -29,7 +34,22 @@ class MaTable
         } catch (PDOException  $e) {
             die("Erreur" . $e->getMessage());
         }
-        
+
+        return $element;
+    }
+    public function insertElement() : array
+    {
+        $element = [];
+
+        try {
+            $connexion  =  Connexion::getInstance();
+            $state = $connexion->prepare("INSERT INTO " . $this->maTable. "VALUES = ?");
+            $state->execute([
+                
+            ]);
+        } catch (PDOException $e) {
+            die('Erreur' . $e->getMessage());
+        }
         return $element;
     }
 
@@ -38,7 +58,8 @@ class MaTable
      *
      * @return string
      */
-    public function getNom(): string {
+    public function getNom(): string
+    {
         return $this->nom;
     }
 
@@ -47,7 +68,8 @@ class MaTable
      *
      * @return string
      */
-    public function getAdresse(): string {
+    public function getAdresse(): string
+    {
         return $this->adresse;
     }
 
@@ -56,7 +78,8 @@ class MaTable
      *
      * @return float
      */
-    public function getPrix(): float {
+    public function getPrix(): float
+    {
         return $this->prix;
     }
 
@@ -65,7 +88,8 @@ class MaTable
      *
      * @return string
      */
-    public function getCommentaire(): string {
+    public function getCommentaire(): string
+    {
         return $this->commentaire;
     }
 
@@ -74,7 +98,8 @@ class MaTable
      *
      * @return float
      */
-    public function getNote(): float {
+    public function getNote(): float
+    {
         return $this->note;
     }
 
@@ -83,7 +108,8 @@ class MaTable
      *
      * @return string
      */
-    public function getVisite(): string {
+    public function getVisite(): string
+    {
         return $this->visite;
     }
 }

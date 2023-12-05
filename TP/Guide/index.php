@@ -1,11 +1,8 @@
 <?php
 
-require "Connexion.php";
-require "./Classes/MaTable.php";
 
-$maTable = new MaTable('restaurant');
-var_dump($maTable->getData());
 
+var_dump($connexion);
 
 ?>
 <!DOCTYPE html>

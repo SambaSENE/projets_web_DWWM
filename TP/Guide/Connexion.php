@@ -1,6 +1,7 @@
 <?php
 
 
+
 class Connexion 
 {
     protected const DBHOST = "localhost";
@@ -10,11 +11,10 @@ class Connexion
     private static  $maConnexion=null;
  
 
+
     private function __construct()
     {
-        
 
-          
     }
 
     public static function getInstance():PDO 

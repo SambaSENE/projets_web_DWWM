@@ -4,10 +4,6 @@ require "./Model/MaTable.php";
 
 $maTable = new MaTable('restaurant');
 
-// var_dump($maTable->findElement());
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -21,33 +17,32 @@ $maTable = new MaTable('restaurant');
 </head>
 
 <body>
+
+<header class="container">
+<div class="container-fluid">
+    <button type="button" class="btn btn-success">Ajouter</button>
+</div>
+</header>
     <main class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
 
-                <tr>
-                    <?php foreach ($maTable->findElement() as $restaurant) : ?>
+        <div class="container-fluid">
 
-                        <td scope="row"><?= $restaurant['nom']?></td>
-                        <td scope="row"><?= $restaurant['adresse']?></td>
-                        <td scope="row"><?= $restaurant['prix']?></td>
-                        <td scope="row"><?= $restaurant['note']?></td>
-                        <td scope="row"><?= $restaurant['commentaire']?></td>
-                        <td scope="row"><?= $restaurant['visite']?></td>
-                    <?php endforeach ?>
-                    
-                </tr>
+            <?php foreach ($maTable->findElement() as $restaurant) : ?>
+                <div class="d-inline-block card text-bg-white mb-3" style="max-width: 18rem;">
+                    <div class="card-header"><?= $restaurant['nom'] ?></div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $restaurant['adresse'] ?></h5>
+                        <h5 class="card-title"><?= $restaurant['prix'] . " Euro"?></h5>
+                        <h5 class="card-title"><?= $restaurant['note']  ?></h5>
+                        <p class="card-text"><?= $restaurant['commentaire'] ?></p>
+                        <h5 class="card-title"><?= $restaurant['visite'] ?></h5>
+                        <button type="button" class="btn btn-success">Modiffier</button>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
 
-            </tbody>
-        </table>
     </main>
 </body>
 
