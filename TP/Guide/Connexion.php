@@ -6,7 +6,7 @@ class Connexion
     protected const DBHOST = "localhost";
     protected const DBUSER = "root";
     protected const DBPASS = "";
-    protected const DBNAME = "guise";
+    protected const DBNAME = "guide";
     private static  $maConnexion=null;
  
 

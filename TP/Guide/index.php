@@ -4,7 +4,7 @@ require "Connexion.php";
 require "./Classes/MaTable.php";
 
 $maTable = new MaTable('restaurant');
-
+var_dump($maTable->getData());
 
 
 ?>
@@ -20,27 +20,30 @@ $maTable = new MaTable('restaurant');
 
 <body>
     <main>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Noms</th>
-                    <th scope="col">Adresses</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Commentaires</th>
-                    <th scope="col">Notes</th>
-                    <th scope="col">Visites</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <tr>
-                    <?= $maTable->getCommentaire()?>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Noms</th>
+                        <th scope="col">Adresses</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Commentaires</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Visites</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <!-- <?= $maTable->getCommentaire()?> -->
+                       
+                      
+                    </tr>
                    
-                  
-                </tr>
-               
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+
+        </div>
     </main>
 </body>
 

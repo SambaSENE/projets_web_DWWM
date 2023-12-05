@@ -31,27 +31,7 @@ class MaTable
 
         return json_encode($data);
     }
-    // public function finfID(int $_id) : array 
-    // {
-    //     try {
-    //         $connexion = Connexion::getInstance();
-    //         $state = $connexion->prepare(
-    //             "SELECT * FROM " .$this->maTable . " WHERE" . $_id
-    //         );
     
-    //         $state->bindParam(':id', $_id, PDO::PARAM_INT);
-    //         $state->execute();
-    
-    //         $resultat = $state->fetch();
-    
-            
-    
-    //     } catch (PDOException $e) {
-    //         die($e->getMessage());
-    //     }
-
-    //     return $resultat;
-    // }
     
     /**
      * Get the value of id
@@ -142,9 +122,9 @@ class MaTable
      *
      * @return string
      */
-    public function getCommentaire(): string {
-        return $this->commentaire;
-    }
+    // public function getCommentaire(): string {
+    //     return $this->commentaire;
+    // }
 
     /**
      * Set the value of commentaire
