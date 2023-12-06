@@ -4,12 +4,7 @@ require "Connexion.php";
 
 class MaTable
 {
-    private string $nom;
-    private string $adresse;
-    private float $prix;
-    private string $commentaire;
-    private float $note;
-    private string $visite;
+
     private string $maTable;
 
     public function __construct(string $_maTable)
@@ -37,79 +32,28 @@ class MaTable
 
         return $element;
     }
-    public function insertElement() : array
+    public function insertElement(string $nom, string $adresse,  int $prix,  string $commentaire, int $note, string $visite): void
     {
-        $element = [];
-
+        var_dump($prix);
         try {
-            $connexion  =  Connexion::getInstance();
-            $state = $connexion->prepare("INSERT INTO " . $this->maTable. "VALUES = ?");
-            $state->execute([
-                
-            ]);
+            $connexion = Connexion::getInstance();
+
+            $rq = "INSERT INTO " . $this->maTable." VALUES  (id , ?,?,?,?,?,?) ";
+            echo $rq;
+            $state = $connexion->prepare($rq);
+            $state->execute(
+                [
+                    $nom, $adresse, $prix, $commentaire, $note, $visite 
+                ]
+            );
+           
         } catch (PDOException $e) {
-            die('Erreur' . $e->getMessage());
+            die("Echec d'insertion" . $e->getMessage());
         }
-        return $element;
     }
 
-    /**
-     * Get the value of nom
-     *
-     * @return string
-     */
-    public function getNom(): string
-    {
-        return $this->nom;
-    }
+    // public function  createElement() : array
+    // {
 
-    /**
-     * Get the value of adresse
-     *
-     * @return string
-     */
-    public function getAdresse(): string
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * Get the value of prix
-     *
-     * @return float
-     */
-    public function getPrix(): float
-    {
-        return $this->prix;
-    }
-
-    /**
-     * Get the value of commentaire
-     *
-     * @return string
-     */
-    public function getCommentaire(): string
-    {
-        return $this->commentaire;
-    }
-
-    /**
-     * Get the value of note
-     *
-     * @return float
-     */
-    public function getNote(): float
-    {
-        return $this->note;
-    }
-
-    /**
-     * Get the value of visite
-     *
-     * @return string
-     */
-    public function getVisite(): string
-    {
-        return $this->visite;
-    }
+    // }
 }

@@ -4,6 +4,8 @@ require "./Model/MaTable.php";
 
 $maTable = new MaTable('restaurant');
 
+// $maTable->insertElement($_POST["nom"] , $_POST["adresse"] , $_POST["prix"], $_POST["commentaire"] , intval( $_POST["note"]) , $_POST["visite"]);
+var_dump( $_POST['prix']);
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +20,44 @@ $maTable = new MaTable('restaurant');
 
 <body>
 
-<header class="container">
-<div class="container-fluid">
-    <button type="button" class="btn btn-success">Ajouter</button>
-</div>
-</header>
+    <header class="container">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-success">Ajouter</button>
+        </div>
+    </header>
     <main class="container">
+        <form action="" method="POST" class="d-inline-block container-fluid" style="width: 25%">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nom :</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="nom" placeholder="Votre nom">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Adresse :</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="adresse" placeholder="Adresse">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Prix :</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" name="prix"  placeholder="Prix">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Commentaire :</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="commentaire" rows="4"></textarea>
+                    </div>
+                </label>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Notes :</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" name="note" placeholder="Notes">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Visites :</label>
+                <input type="datetime" class="form-control" id="exampleFormControlInput1" name="visite" placeholder="Visites">
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
 
         <div class="container-fluid">
 
@@ -32,7 +66,7 @@ $maTable = new MaTable('restaurant');
                     <div class="card-header"><?= $restaurant['nom'] ?></div>
                     <div class="card-body">
                         <h5 class="card-title"><?= $restaurant['adresse'] ?></h5>
-                        <h5 class="card-title"><?= $restaurant['prix'] . " Euro"?></h5>
+                        <h5 class="card-title"><?= round($restaurant['prix'] ,2) . " Euro" ?></h5>
                         <h5 class="card-title"><?= $restaurant['note']  ?></h5>
                         <p class="card-text"><?= $restaurant['commentaire'] ?></p>
                         <h5 class="card-title"><?= $restaurant['visite'] ?></h5>
@@ -44,6 +78,8 @@ $maTable = new MaTable('restaurant');
         </div>
 
     </main>
+
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
