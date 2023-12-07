@@ -32,28 +32,64 @@ class MaTable
 
         return $element;
     }
-    public function insertElement(string $nom, string $adresse,  int $prix,  string $commentaire, int $note, string $visite): void
+    public function insertElement(string $nom, string $adresse,  float $prix,  string $commentaire, int $note,  string $visite): void
     {
-        var_dump($prix);
+       
+        
         try {
             $connexion = Connexion::getInstance();
 
-            $rq = "INSERT INTO " . $this->maTable." VALUES  (id , ?,?,?,?,?,?) ";
-            echo $rq;
+            // $rq = "INSERT INTO " . $this->maTable ." VALUES  ( id , ?,?,?,?,?,?)) ";
+            $rq = "INSERT INTO " . $this->maTable . " VALUES ( id, ?, ?, ?, ?, ?,?)";
             $state = $connexion->prepare($rq);
             $state->execute(
                 [
-                    $nom, $adresse, $prix, $commentaire, $note, $visite 
+                    $nom, $adresse, $prix, $commentaire, $note, $visite
                 ]
             );
-           
         } catch (PDOException $e) {
             die("Echec d'insertion" . $e->getMessage());
         }
     }
+    public function deleteElement($id) : void
+    {
+        try {
+            $connexion = Connexion::getInstance();
+            
+            $rq = "DELETE FROM " . $this->maTable . " WHERE id= :id";
+            $state = $connexion->prepare($rq);
+            $state->bindParam("id" , $id);
+            $state->execute();
 
+        } catch (PDOException $e) {
+            die('Erreur ' . $e->getMessage());
+        }
+
+
+    }
     // public function  createElement() : array
     // {
 
     // }
+
+    /**
+     * Set the value of maTable
+     *
+     * @param string $maTable
+     *
+     * @return self
+     */
+    public function setMaTable(string $maTable): self {
+        $this->maTable = $maTable;
+        return $this;
+    }
+
+    /**
+     * Get the value of maTable
+     *
+     * @return string
+     */
+    public function getMaTable(): string {
+        return $this->maTable;
+    }
 }

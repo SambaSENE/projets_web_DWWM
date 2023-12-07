@@ -2,14 +2,22 @@
 
 require "./Model/MaTable.php";
 
-$maTable = new MaTable('restaurant');
+$maTable = new MaTable('restaurants');
 
-// $maTable->insertElement($_POST["nom"] , $_POST["adresse"] , $_POST["prix"], $_POST["commentaire"] , intval( $_POST["note"]) , $_POST["visite"]);
-var_dump( $_POST['prix']);
+if (isset($_POST['nom']) &&  isset($_POST['adresse']) && isset($_POST['prix']) && isset($_POST['commentaire']) && isset($_POST['note']) && isset($_POST['visite'])) {
+
+    $maTable->insertElement($_POST["nom"], $_POST["adresse"], floatval($_POST['prix']), $_POST["commentaire"], intval($_POST["note"]), $_POST["visite"]);
+}
+
+
+foreach ($maTable->findElement() as $value) {
+    echo $value['id'];
+}
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-fr">
 
 <head>
     <meta charset="UTF-8">
@@ -36,8 +44,8 @@ var_dump( $_POST['prix']);
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="adresse" placeholder="Adresse">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Prix :</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" name="prix"  placeholder="Prix">
+                <label for="prix" class="form-label">Prix :</label>
+                <input type="number" step="0.01" class="form-control" id="prix" name="prix" placeholder="Prix">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">
@@ -53,7 +61,7 @@ var_dump( $_POST['prix']);
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Visites :</label>
-                <input type="datetime" class="form-control" id="exampleFormControlInput1" name="visite" placeholder="Visites">
+                <input type="date" class="form-control" id="exampleFormControlInput1" name="visite" placeholder="Visites">
             </div>
 
             <input class="btn btn-primary" type="submit" value="Submit">
@@ -66,12 +74,12 @@ var_dump( $_POST['prix']);
                     <div class="card-header"><?= $restaurant['nom'] ?></div>
                     <div class="card-body">
                         <h5 class="card-title"><?= $restaurant['adresse'] ?></h5>
-                        <h5 class="card-title"><?= round($restaurant['prix'] ,2) . " Euro" ?></h5>
+                        <h5 class="card-title"><?= round($restaurant['prix'], 2) . " Euro" ?></h5>
                         <h5 class="card-title"><?= $restaurant['note']  ?></h5>
                         <p class="card-text"><?= $restaurant['commentaire'] ?></p>
                         <h5 class="card-title"><?= $restaurant['visite'] ?></h5>
                         <button type="button" class="btn btn-success">Modiffier</button>
-                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        <button type="button" value="<?= $maTable->deleteElement($restaurant['id'])?>" class="btn btn-danger">Supprimer</button>
                     </div>
                 </div>
             <?php endforeach ?>

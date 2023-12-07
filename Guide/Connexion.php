@@ -22,6 +22,7 @@ class Connexion
 
             try {
                 self::$maConnexion = new PDO($dsn, self::DBUSER, self::DBPASS, [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC]);
+                
             } catch (PDOException $e) {
                 echo "erreur" . $e->getMessage();
             }
