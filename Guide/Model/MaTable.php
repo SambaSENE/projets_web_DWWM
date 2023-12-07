@@ -56,9 +56,9 @@ class MaTable
         try {
             $connexion = Connexion::getInstance();
             
-            $rq = "DELETE FROM " . $this->maTable . " WHERE id= :id";
+            $rq = "DELETE FROM " . $this->maTable . " WHERE :id= id";
             $state = $connexion->prepare($rq);
-            $state->bindParam("id" , $id);
+            $state->bindParam(":id" , $id);
             $state->execute();
 
         } catch (PDOException $e) {

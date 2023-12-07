@@ -2,18 +2,19 @@
 
 require "./Model/MaTable.php";
 
-$maTable = new MaTable('restaurants');
+$maTable = new MaTable('restaurant');
 
 if (isset($_POST['nom']) &&  isset($_POST['adresse']) && isset($_POST['prix']) && isset($_POST['commentaire']) && isset($_POST['note']) && isset($_POST['visite'])) {
 
     $maTable->insertElement($_POST["nom"], $_POST["adresse"], floatval($_POST['prix']), $_POST["commentaire"], intval($_POST["note"]), $_POST["visite"]);
 }
 
+if (isset($_POST['delete'])) {
+    $maTable->deleteElement($_POST['id']);
+} else {
 
-foreach ($maTable->findElement() as $value) {
-    echo $value['id'];
+    echo "Soumission de formulaire non autorisée.";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +80,16 @@ foreach ($maTable->findElement() as $value) {
                         <p class="card-text"><?= $restaurant['commentaire'] ?></p>
                         <h5 class="card-title"><?= $restaurant['visite'] ?></h5>
                         <button type="button" class="btn btn-success">Modiffier</button>
-                        <button type="button" value="<?= $maTable->deleteElement($restaurant['id'])?>" class="btn btn-danger">Supprimer</button>
+
+
+                        <form method="POST">
+                            
+                            <input type="hidden" name="id" value="<?= $restaurant['id']; ?>" />
+                            
+                            <button class="btn btn-large btn-danger" type="submit" name="delete">
+                                Supprimer
+                            </button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach ?>
