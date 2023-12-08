@@ -72,24 +72,5 @@ class MaTable
 
     // }
 
-    /**
-     * Set the value of maTable
-     *
-     * @param string $maTable
-     *
-     * @return self
-     */
-    public function setMaTable(string $maTable): self {
-        $this->maTable = $maTable;
-        return $this;
-    }
-
-    /**
-     * Get the value of maTable
-     *
-     * @return string
-     */
-    public function getMaTable(): string {
-        return $this->maTable;
-    }
+   
 }
