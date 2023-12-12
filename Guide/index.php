@@ -15,9 +15,11 @@
         <main class="container flex">
 
         <?php
+        echo  "Test";
+        require "./Connexion.php";
         require "./Model/MaTable.php";
 
-        $maTable = new MaTable('restaurants');
+        $maTable = new MaTable('restaurant');
 
         if (isset($_POST['nom']) &&  isset($_POST['adresse']) && isset($_POST['prix']) && isset($_POST['commentaire']) && isset($_POST['note']) && isset($_POST['visite'])) {
 
@@ -32,9 +34,11 @@
         }
         include "./View/includes/cards.php";
         include "./View/includes/add_form.php";
+        
+        
         ?>
 
-
+        
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

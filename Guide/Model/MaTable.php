@@ -1,6 +1,6 @@
 <?php
 
-require "Connexion.php";
+
 
 class MaTable
 {
@@ -32,10 +32,24 @@ class MaTable
 
         return $element;
     }
+    public function  updateElempent() : array
+    {
+        $newElement = [];
+        try {
+            $connexion = Connexion::getInstance();
+
+            $req = "UPDATE $this->maTable SET id = ?";
+            
+
+        } catch (PDOException $e) {
+            die('Erreur' .$e->getMessage());
+        }
+
+        return $newElement;
+    }
+
     public function insertElement(string $nom, string $adresse,  float $prix,  string $commentaire, int $note,  string $visite): void
     {
-       
-        
         try {
             $connexion = Connexion::getInstance();
 
@@ -58,7 +72,7 @@ class MaTable
             
             $rq = "DELETE FROM " . $this->maTable . " WHERE :id= id";
             $state = $connexion->prepare($rq);
-            $state->bindParam(":id" , $id);
+            $state->bindParam(":id" , $id ,PDO::PARAM_INT);
             $state->execute();
 
         } catch (PDOException $e) {
@@ -67,10 +81,6 @@ class MaTable
 
 
     }
-    // public function  createElement() : array
-    // {
-
-    // }
-
+    
    
 }
