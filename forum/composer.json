@@ -1,0 +1,20 @@
+{
+    "name": "project/forum",
+    "description": "forum de discution",
+    "license": "MIT License",
+    "autoload": {
+        "psr-4": {
+            "Project\\Forum\\": "src/Controller"
+            
+        }
+    },
+    "authors": [
+        {
+            "name": "Samba SENE",
+            "email": "80283818+SambaSENE@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        
+    }
+}
