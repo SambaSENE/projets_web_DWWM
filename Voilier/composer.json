@@ -1,11 +1,11 @@
 {
-    "name": "project/forum",
-    "description": "forum de discution",
-    "license": "MIT License",
+    "name": "app/volier",
+    "description": "refonte site d'agence de location",
+    "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Project\\Forum\\": "src/Controller"
-            
+            "App\\": "src/"
         }
     },
     "authors": [
@@ -14,7 +14,5 @@
             "email": "80283818+SambaSENE@users.noreply.github.com"
         }
     ],
-    "require": {
-        
-    }
+    "require": {}
 }
