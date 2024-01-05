@@ -1,8 +1,5 @@
 {
     "name": "app/colblanc",
-    "description": "Tp",
-    "type": "library",
-    "license": "MIT",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
