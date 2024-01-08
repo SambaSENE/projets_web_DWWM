@@ -1,0 +1,15 @@
+{
+    "name": "ssene/welovefood",
+    "autoload": {
+        "psr-4": {
+            "Ssene\\Welovefood\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Samba SENE",
+            "email": "80283818+SambaSENE@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,6 +1,6 @@
 <?php
 
-require "Connexion.php";
+use App\Connexion;
 
 class MaTable
 {
@@ -32,10 +32,24 @@ class MaTable
 
         return $element;
     }
+    public function  updateElempent() : array
+    {
+        $newElement = [];
+        try {
+            $connexion = Connexion::getInstance();
+
+            $req = "UPDATE $this->maTable SET id = ?";
+            
+
+        } catch (PDOException $e) {
+            die('Erreur' .$e->getMessage());
+        }
+
+        return $newElement;
+    }
+
     public function insertElement(string $nom, string $adresse,  float $prix,  string $commentaire, int $note,  string $visite): void
     {
-       
-        
         try {
             $connexion = Connexion::getInstance();
 
@@ -56,9 +70,9 @@ class MaTable
         try {
             $connexion = Connexion::getInstance();
             
-            $rq = "DELETE FROM " . $this->maTable . " WHERE id= :id";
+            $rq = "DELETE FROM " . $this->maTable . " WHERE :id= id";
             $state = $connexion->prepare($rq);
-            $state->bindParam("id" , $id);
+            $state->bindParam(":id" , $id ,PDO::PARAM_INT);
             $state->execute();
 
         } catch (PDOException $e) {
@@ -67,29 +81,6 @@ class MaTable
 
 
     }
-    // public function  createElement() : array
-    // {
-
-    // }
-
-    /**
-     * Set the value of maTable
-     *
-     * @param string $maTable
-     *
-     * @return self
-     */
-    public function setMaTable(string $maTable): self {
-        $this->maTable = $maTable;
-        return $this;
-    }
-
-    /**
-     * Get the value of maTable
-     *
-     * @return string
-     */
-    public function getMaTable(): string {
-        return $this->maTable;
-    }
+    
+   
 }
